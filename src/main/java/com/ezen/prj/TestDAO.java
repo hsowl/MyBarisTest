@@ -17,9 +17,9 @@ public class TestDAO {
     PreparedStatement pstmt = null;
     ResultSet rs = null;
     String oracle = "oracle.jdbc.driver.OracleDriver";
-    String mysql = "jdbc:mysql://localhost:3306/scottdb?serverTimezone=UTC";
+    String mysql = "com.mysql.cj.jdbc.Driver";
     String orurl = "jdbc:oracle:thin:@localhost:1521:xe";
-    String myurl = "dbc:mysql://localhost:3306/scottdb?serverTimezone=UTC";
+    String myurl = "jdbc:mysql://localhost:3306/scottdb?serverTimezone=UTC";
     String username = "scott";
     String pass = "tiger";
 
@@ -28,8 +28,8 @@ public class TestDAO {
         List<TestVO> list = new ArrayList<>();
         try {
             String sql = "select * from test";
-            Class.forName(oracle);
-            conn = DriverManager.getConnection(url, username, pass);
+            Class.forName(mysql);
+            conn = DriverManager.getConnection(myurl, username, pass);
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
 
@@ -58,8 +58,8 @@ public class TestDAO {
     public void insertTest(String name, String phone, String address) {
         try {
             String sql = "insert into test values (test_seq.nextval,?,?,?)";
-            Class.forName(oracle);
-            conn = DriverManager.getConnection(url, username, pass);
+            Class.forName(mysql);
+            conn = DriverManager.getConnection(myurl, username, pass);
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,name);
             pstmt.setString(2,phone);
