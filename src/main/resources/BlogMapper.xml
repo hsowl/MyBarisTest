@@ -3,7 +3,34 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ezen.mybatis.BlogMapper">
-    <select id="selectBlog" resultType="Blog">
-        select * from Blog where id = #{id}
+
+    <select id="selectOne" resultType="com.ezen.mybatis.TestVO" parameterType="int">
+
+        select * from test where id = #{id}
+
     </select>
+
+    <select id="selectAllList" resultType="com.ezen.mybatis.TestVO">
+
+        select * from test
+
+    </select>
+
+    <insert id="insertTest" parameterType="com.ezen.mybatis.TestVO" >
+        INSERT into test
+        (name, phone, address)
+        VALUES
+        (#{name}, #{phone}, #{address})
+    </insert>
+
+    <update id="updateTest">
+        UPDATE test set
+        name = #{name},
+        phone = #{phone},
+        address = #{address}
+
+        WHERE id = #{id}
+    </update>
+
+
 </mapper>
