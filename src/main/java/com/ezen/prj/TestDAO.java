@@ -57,7 +57,7 @@ public class TestDAO {
 
     public void insertTest(String name, String phone, String address) {
         try {
-            String sql = "insert into test values (test_seq.nextval,?,?,?)";
+            String sql = "insert into test values (id,?,?,?)";
             Class.forName(mysql);
             conn = DriverManager.getConnection(myurl, username, pass);
             pstmt = conn.prepareStatement(sql);
